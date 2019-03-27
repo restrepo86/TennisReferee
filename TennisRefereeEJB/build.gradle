@@ -1,0 +1,62 @@
+apply plugin: 'java'
+apply plugin: "jacoco"
+
+jacoco {
+    toolVersion = "0.7.4+"
+}
+
+
+[ compileJava, compileTestJava ]*.options*.encoding = 'UTF-8'
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+group = 'co.com.star.tennisreferee'
+
+dependencies {
+
+    compile 'org.jboss.logging:jboss-logging:3.1.4.GA'
+    compile 'org.jboss.spec:jboss-javaee-6.0:3.0.3.Final'
+    compile 'org.projectlombok:lombok:1.16.18'
+    compile 'org.springframework.data:spring-data-jpa:1.11.12.RELEASE'
+    compile 'commons-beanutils:commons-beanutils:1.9.2'
+	compile 'com.google.guava:guava:18.0'        
+    
+    testCompile 'junit:junit:4.11'
+    testCompile 'org.mockito:mockito-all:1.9.5'
+    testCompile 'org.easytesting:fest-assert-core:2.0M10'
+    testCompile 'com.googlecode.catch-exception:catch-exception:1.2.0'
+    testCompile 'net.java.quickcheck:quickcheck:0.6'
+    testCompile 'org.jboss.resteasy:resteasy-jaxrs:3.0.2.Final'
+    testCompile 'org.hibernate:hibernate-validator:3.1.0.GA'
+    testCompile 'org.projectlombok.test:test-maven-lombok:1.16.6.1'
+    testCompile 'org.jasypt:jasypt:1.9.2'
+    testCompile group: 'com.google.code.bean-matchers', name: 'bean-matchers', version: '0.10'
+    testCompile group: 'uk.co.jemos.podam', name: 'podam', version: '5.2.0.RELEASE'
+    
+}
+
+repositories {
+    mavenCentral()
+}
+
+test{
+    reports.junitXml.destination="../TennisRefereeEAR/build/test-results"
+ 
+    jacoco {
+        destinationFile = file("../TennisRefereeEAR/build/jacoco/jacoco.exec")
+        append=true
+    }
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination "${buildDir}/jacocoHtml"
+    }
+}
+
+jar {
+    archiveName = "${baseName}.${extension}"
+}

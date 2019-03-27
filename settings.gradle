@@ -1,0 +1,4 @@
+include ':TennisRefereeEJB'
+include ':TennisRefereeWeb'
+include ':TennisRefereeEAR'
+rootProject.name='TennisReferee'

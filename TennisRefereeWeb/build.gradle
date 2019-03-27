@@ -1,0 +1,39 @@
+apply plugin: 'war'
+apply plugin: "jacoco"
+
+[ compileJava, compileTestJava ]*.options*.encoding = 'UTF-8'
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+group = 'co.com.star.tennisreferee'
+
+dependencies {
+
+    providedCompile project(':TennisRefereeEJB')
+    
+    providedCompile 'org.jboss.logging:jboss-logging:3.1.4.GA'
+    providedCompile 'org.jboss.spec:jboss-javaee-6.0:3.0.3.Final'
+    providedCompile 'org.projectlombok:lombok:1.16.18'
+    
+    providedCompile group: 'io.swagger', name: 'swagger-jersey-jaxrs', version: '1.5.0'
+    providedCompile 'org.eclipse.jetty:jetty-servlets:9.3.0.M2'      
+        
+    testCompile project(':TennisRefereeEJB')
+    
+    testCompile 'junit:junit:4.11'
+    testCompile 'org.mockito:mockito-all:1.9.5'
+    testCompile 'org.easytesting:fest-assert-core:2.0M10'
+    testCompile 'org.hamcrest:hamcrest-core:1.3'
+    testCompile 'org.hibernate:hibernate-validator:3.1.0.GA'
+    testCompile 'uk.co.jemos.podam:podam:5.2.0.RELEASE'
+    
+}
+
+repositories {
+    mavenCentral()
+}
+
+war {
+    archiveName = "${baseName}.${extension}"
+}
