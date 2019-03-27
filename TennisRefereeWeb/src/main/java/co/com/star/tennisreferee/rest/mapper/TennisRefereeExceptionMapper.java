@@ -1,4 +1,4 @@
-package co.com.star.tennisreferee.rest.services;
+package co.com.star.tennisreferee.rest.mapper;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
