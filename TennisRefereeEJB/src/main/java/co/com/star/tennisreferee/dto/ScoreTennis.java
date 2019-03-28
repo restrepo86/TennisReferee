@@ -2,25 +2,27 @@ package co.com.star.tennisreferee.dto;
 
 public class ScoreTennis {
 
-	private static ScoreTennis INSTANCIA = null;
+	private static ScoreTennis INSTANCE = null;
 	
 	private ScoreTennis() {}
 	
 	private int scorePlayerOne;
 	private int scorePlayerTwo;
-	private String score;
+	private String scorePlayerOneDescription;
+	private String scorePlayerTwoDescription;
+	private String scoreGame;
 	
-	public static ScoreTennis obtenerInstancia() {
-		if (INSTANCIA == null) crearInstancia();
-		return INSTANCIA;
+	public static ScoreTennis getInstance() {
+		if (INSTANCE == null) buildInstance();
+		return INSTANCE;
 	}
 
-	public static void reiniciarJuego() {
-		crearInstancia();
+	private synchronized static void buildInstance() {
+		INSTANCE = new ScoreTennis();
 	}
-	
-	private synchronized static void crearInstancia() {
-			INSTANCIA = new ScoreTennis();
+
+	public static void restartGame() {
+		buildInstance();
 	}
 
 	public int getScorePlayerOne() {
@@ -39,12 +41,29 @@ public class ScoreTennis {
 		this.scorePlayerTwo = scorePlayerTwo;
 	}
 
-	public String getScore() {
-		return score;
+	public String getScorePlayerOneDescription() {
+		return scorePlayerOneDescription;
 	}
 
-	public void setScore(String score) {
-		this.score = score;
+	public void setScorePlayerOneDescription(String scorePlayerOneDescription) {
+		this.scorePlayerOneDescription = scorePlayerOneDescription;
 	}
+
+	public String getScorePlayerTwoDescription() {
+		return scorePlayerTwoDescription;
+	}
+
+	public void setScorePlayerTwoDescription(String scorePlayerTwoDescription) {
+		this.scorePlayerTwoDescription = scorePlayerTwoDescription;
+	}
+
+	public String getScoreGame() {
+		return scoreGame;
+	}
+
+	public void setScoreGame(String scoreGame) {
+		this.scoreGame = scoreGame;
+	}
+
 
 }

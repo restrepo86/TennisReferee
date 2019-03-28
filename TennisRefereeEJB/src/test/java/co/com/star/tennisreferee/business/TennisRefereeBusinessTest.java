@@ -49,7 +49,7 @@ public class TennisRefereeBusinessTest {
 	@Test 
 	public void shouldBeThrowExcepcionByPointsInBothPlayers() throws TennisRefereeValidationException {
 		
-		ScoreTennis.reiniciarJuego();
+		ScoreTennis.restartGame();
 		scoreRequestDTO.setPlayerOnePoint(true);
 		scoreRequestDTO.setPlayerTwoPoint(true);
 		tennisRefereeBusiness.calculateScore(scoreRequestDTO);
@@ -60,7 +60,7 @@ public class TennisRefereeBusinessTest {
 	@Test
 	public void shouldBeCalculateScoreAndAssertNotEqualsRestartingGame() throws TennisRefereeValidationException {
 		
-		ScoreTennis.reiniciarJuego();
+		ScoreTennis.restartGame();
 		scoreRequestDTO.setPlayerOnePoint(true);
 		scoreRequestDTO.setPlayerTwoPoint(false);
 		ScoreTennis scoreResponseDTO = tennisRefereeBusiness.calculateScore(scoreRequestDTO);
@@ -73,7 +73,7 @@ public class TennisRefereeBusinessTest {
 	@Test
 	public void shouldBeCalculateScoreAndAssertNotEqualsRestartingGameTestTwo() throws TennisRefereeValidationException {
 		
-		ScoreTennis.reiniciarJuego();
+		ScoreTennis.restartGame();
 		scoreRequestDTO.setPlayerOnePoint(true);
 		scoreRequestDTO.setPlayerTwoPoint(false);
 		ScoreTennis scoreResponseDTO = tennisRefereeBusiness.calculateScore(scoreRequestDTO);
@@ -86,7 +86,7 @@ public class TennisRefereeBusinessTest {
 	@Test
 	public void shouldBeCalculateScoreAndReturnEqualsScorePlayerTwoByNotPointsRestartingGame() throws TennisRefereeValidationException {
 		
-		ScoreTennis.reiniciarJuego();
+		ScoreTennis.restartGame();
 		scoreRequestDTO.setPlayerOnePoint(true);
 		scoreRequestDTO.setPlayerTwoPoint(false);
 		ScoreTennis scoreResponseDTO = tennisRefereeBusiness.calculateScore(scoreRequestDTO);
@@ -98,7 +98,7 @@ public class TennisRefereeBusinessTest {
 	@Test
 	public void shouldBeCalculateScoreWithTennisAccumulatedScoreRestartingGame() throws TennisRefereeValidationException {
 		
-		ScoreTennis.reiniciarJuego();
+		ScoreTennis.restartGame();
 		scoreRequestDTO.setPlayerOnePoint(true);
 		scoreRequestDTO.setPlayerTwoPoint(false);
 		ScoreTennis scoreTennisSetOne = tennisRefereeBusiness.calculateScore(scoreRequestDTO);
@@ -116,7 +116,7 @@ public class TennisRefereeBusinessTest {
 	@Test
 	public void shouldBeCalculateScoreWithTennisAccumulatedScoreRestartingGameTestTwo() throws TennisRefereeValidationException {
 		
-		ScoreTennis.reiniciarJuego();
+		ScoreTennis.restartGame();
 		scoreRequestDTO.setPlayerOnePoint(false);
 		scoreRequestDTO.setPlayerTwoPoint(true);
 		ScoreTennis scoreTennisSetOne = tennisRefereeBusiness.calculateScore(scoreRequestDTO);
@@ -134,7 +134,7 @@ public class TennisRefereeBusinessTest {
 	@Test 
 	public void shouldBeCalculateScoreWithTennisAccumulatedScoreRestartingGameTestThree() throws TennisRefereeValidationException {
 		
-		ScoreTennis.reiniciarJuego();
+		ScoreTennis.restartGame();
 		scoreRequestDTO.setPlayerOnePoint(false);
 		scoreRequestDTO.setPlayerTwoPoint(true);
 		ScoreTennis scoreTennisSetOne = tennisRefereeBusiness.calculateScore(scoreRequestDTO);
