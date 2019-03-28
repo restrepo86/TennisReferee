@@ -7,9 +7,6 @@ import lombok.Setter;
 @Setter
 public class ScoreRequestDTO {
 
-	private int scorePlayerOne;
-	private int scorePlayerTwo;
-
 	private boolean isPlayerOnePoint;
 	private boolean isPlayerTwoPoint;
 	

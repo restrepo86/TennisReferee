@@ -10,7 +10,7 @@ import org.mockito.InjectMocks;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import co.com.star.tennisreferee.dto.ScoreRequestDTO;
-import co.com.star.tennisreferee.dto.ScoreResponseDTO;
+import co.com.star.tennisreferee.dto.ScoreTennis;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TennisRefereeBusinessTest {
@@ -24,53 +24,103 @@ public class TennisRefereeBusinessTest {
 	public void setUp() {
 		
 		scoreRequestDTO = new ScoreRequestDTO();
-		scoreRequestDTO.setScorePlayerOne(1);
-		scoreRequestDTO.setScorePlayerTwo(0);
 		
 	}
 	
 	@Test
 	public void shouldBeCalculateScore() {
 		
-		scoreRequestDTO.setScorePlayerOne(1);
-		scoreRequestDTO.setScorePlayerTwo(0);
-		ScoreResponseDTO scoreResponseDTO = tennisRefereeBusiness.calculateScore(scoreRequestDTO);
+		scoreRequestDTO.setPlayerOnePoint(true);
+		scoreRequestDTO.setPlayerTwoPoint(false);
+		ScoreTennis scoreResponseDTO = tennisRefereeBusiness.calculateScore(scoreRequestDTO);
 		assertEquals(1, scoreResponseDTO.getScorePlayerOne());
 		assertEquals(0, scoreResponseDTO.getScorePlayerTwo()); 
 		
 	}
 	
 	@Test
-	public void shouldBeCalculateScoreAndAssertNotEquals() {
+	public void shouldBeCalculateScoreAndAssertNotEqualsRestartingGame() {
 		
-		scoreRequestDTO.setScorePlayerOne(1);
-		scoreRequestDTO.setScorePlayerTwo(0);
-		ScoreResponseDTO scoreResponseDTO = tennisRefereeBusiness.calculateScore(scoreRequestDTO);
+		ScoreTennis.reiniciarJuego();
+		scoreRequestDTO.setPlayerOnePoint(true);
+		scoreRequestDTO.setPlayerTwoPoint(false);
+		ScoreTennis scoreResponseDTO = tennisRefereeBusiness.calculateScore(scoreRequestDTO);
 		assertNotEquals(2, scoreResponseDTO.getScorePlayerOne());
 		assertNotEquals(1, scoreResponseDTO.getScorePlayerTwo()); 
 		
 	}
 	
 	@Test
-	public void shouldBeCalculateScoreAndAssertNotEqualsTestTwo() {
+	public void shouldBeCalculateScoreAndAssertNotEqualsRestartingGameTestTwo() {
 		
-		scoreRequestDTO.setScorePlayerOne(1);
-		scoreRequestDTO.setScorePlayerTwo(0);
-		ScoreResponseDTO scoreResponseDTO = tennisRefereeBusiness.calculateScore(scoreRequestDTO);
+		ScoreTennis.reiniciarJuego();
+		scoreRequestDTO.setPlayerOnePoint(true);
+		scoreRequestDTO.setPlayerTwoPoint(false);
+		ScoreTennis scoreResponseDTO = tennisRefereeBusiness.calculateScore(scoreRequestDTO);
 		assertNotEquals(0, scoreResponseDTO.getScorePlayerOne());
 		assertNotEquals(1, scoreResponseDTO.getScorePlayerTwo()); 
 		
 	}
 	
 	@Test
-	public void shouldBeCalculateScoreAndReturnEqualsScorePlayerTwoByNotPoints() {
+	public void shouldBeCalculateScoreAndReturnEqualsScorePlayerTwoByNotPointsRestartingGame() {
 		
-		scoreRequestDTO.setScorePlayerOne(1);
-		scoreRequestDTO.setScorePlayerTwo(0);
+		ScoreTennis.reiniciarJuego();
 		scoreRequestDTO.setPlayerOnePoint(true);
-		scoreRequestDTO.setPlayerOnePoint(false);
-		ScoreResponseDTO scoreResponseDTO = tennisRefereeBusiness.calculateScore(scoreRequestDTO);
+		scoreRequestDTO.setPlayerTwoPoint(false);
+		ScoreTennis scoreResponseDTO = tennisRefereeBusiness.calculateScore(scoreRequestDTO);
 		assertEquals(0, scoreResponseDTO.getScorePlayerTwo()); 
+		
+	}
+	
+	@Test
+	public void shouldBeCalculateScoreWithTennisAccumulatedScoreRestartingGame() {
+		
+		ScoreTennis.reiniciarJuego();
+		scoreRequestDTO.setPlayerOnePoint(true);
+		scoreRequestDTO.setPlayerTwoPoint(false);
+		ScoreTennis scoreTennisSetOne = tennisRefereeBusiness.calculateScore(scoreRequestDTO);
+		assertEquals(1, scoreTennisSetOne.getScorePlayerOne()); 
+		assertEquals(0, scoreTennisSetOne.getScorePlayerTwo()); 
+		scoreRequestDTO.setPlayerOnePoint(true);
+		scoreRequestDTO.setPlayerTwoPoint(false);
+		ScoreTennis scoreTennisSetTwo = tennisRefereeBusiness.calculateScore(scoreRequestDTO);
+		assertEquals(2, scoreTennisSetTwo.getScorePlayerOne()); 
+		assertEquals(0, scoreTennisSetTwo.getScorePlayerTwo()); 
+		
+	}
+	
+	@Test
+	public void shouldBeCalculateScoreWithTennisAccumulatedScoreRestartingGameTestTwo() {
+		
+		ScoreTennis.reiniciarJuego();
+		scoreRequestDTO.setPlayerOnePoint(false);
+		scoreRequestDTO.setPlayerTwoPoint(true);
+		ScoreTennis scoreTennisSetOne = tennisRefereeBusiness.calculateScore(scoreRequestDTO);
+		assertEquals(0, scoreTennisSetOne.getScorePlayerOne()); 
+		assertEquals(1, scoreTennisSetOne.getScorePlayerTwo()); 
+		scoreRequestDTO.setPlayerOnePoint(true);
+		scoreRequestDTO.setPlayerTwoPoint(false);
+		ScoreTennis scoreTennisSetTwo = tennisRefereeBusiness.calculateScore(scoreRequestDTO);
+		assertEquals(1, scoreTennisSetTwo.getScorePlayerOne()); 
+		assertEquals(1, scoreTennisSetTwo.getScorePlayerTwo()); 
+		
+	}
+	
+	@Test
+	public void shouldBeCalculateScoreWithTennisAccumulatedScoreRestartingGameTestThree() {
+		
+		ScoreTennis.reiniciarJuego();
+		scoreRequestDTO.setPlayerOnePoint(false);
+		scoreRequestDTO.setPlayerTwoPoint(true);
+		ScoreTennis scoreTennisSetOne = tennisRefereeBusiness.calculateScore(scoreRequestDTO);
+		assertEquals(0, scoreTennisSetOne.getScorePlayerOne()); 
+		assertEquals(1, scoreTennisSetOne.getScorePlayerTwo()); 
+		scoreRequestDTO.setPlayerOnePoint(false);
+		scoreRequestDTO.setPlayerTwoPoint(true);
+		ScoreTennis scoreTennisSetTwo = tennisRefereeBusiness.calculateScore(scoreRequestDTO);
+		assertEquals(0, scoreTennisSetTwo.getScorePlayerOne()); 
+		assertEquals(2, scoreTennisSetTwo.getScorePlayerTwo()); 
 		
 	}
 	

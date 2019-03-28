@@ -1,18 +1,21 @@
 package co.com.star.tennisreferee.business;
 
 import co.com.star.tennisreferee.dto.ScoreRequestDTO;
-import co.com.star.tennisreferee.dto.ScoreResponseDTO;
+import co.com.star.tennisreferee.dto.ScoreTennis;
 
 public class TennisRefereeBusiness {
 
-	public ScoreResponseDTO calculateScore(ScoreRequestDTO scoreRequestDTO) {
+	public ScoreTennis calculateScore(ScoreRequestDTO scoreRequestDTO) {
 		
-		ScoreResponseDTO scoreResponseDTO = new ScoreResponseDTO();
-		scoreResponseDTO.setScorePlayerOne(scoreRequestDTO.isPlayerOnePoint() ? scoreRequestDTO.getScorePlayerOne() + 1 : scoreRequestDTO.getScorePlayerOne());
-		scoreRequestDTO.setScorePlayerTwo(scoreRequestDTO.isPlayerTwoPoint() ? scoreRequestDTO.getScorePlayerTwo() + 1 : scoreRequestDTO.getScorePlayerTwo());
+		ScoreTennis scoreTennis = ScoreTennis.obtenerInstancia();
 		
-		return scoreResponseDTO;
+		scoreTennis.setScorePlayerOne(scoreRequestDTO.isPlayerOnePoint() ? scoreTennis.getScorePlayerOne() + 1 : scoreTennis.getScorePlayerOne());
+		scoreTennis.setScorePlayerTwo(scoreRequestDTO.isPlayerTwoPoint() ? scoreTennis.getScorePlayerTwo() + 1 : scoreTennis.getScorePlayerTwo());
+		
+		return scoreTennis;
 		
 	}
+
+	
 
 }

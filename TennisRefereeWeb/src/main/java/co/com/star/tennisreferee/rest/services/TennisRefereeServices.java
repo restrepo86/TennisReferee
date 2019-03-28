@@ -9,7 +9,7 @@ import javax.ws.rs.core.MediaType;
 
 import co.com.star.tennisreferee.business.TennisRefereeBusiness;
 import co.com.star.tennisreferee.dto.ScoreRequestDTO;
-import co.com.star.tennisreferee.dto.ScoreResponseDTO;
+import co.com.star.tennisreferee.dto.ScoreTennis;
 
 @Path("score")
 public class TennisRefereeServices {
@@ -22,7 +22,7 @@ public class TennisRefereeServices {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public ScoreResponseDTO calculateScore(ScoreRequestDTO scoreRequestDTO) {
+	public ScoreTennis calculateScore(ScoreRequestDTO scoreRequestDTO) {
 		return tennisRefereeBusiness.calculateScore(scoreRequestDTO);
 	}
 
