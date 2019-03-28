@@ -6,6 +6,8 @@ import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
 import co.com.star.tennisreferee.rest.mapper.TennisRefereeExceptionMapper;
+import co.com.star.tennisreferee.rest.mapper.TennisRefereeValidationExceptionMapper;
+import co.com.star.tennisreferee.rest.services.TennisRefereeServices;
 import io.swagger.jaxrs.config.BeanConfig;
 import io.swagger.jaxrs.listing.ApiListingResource;
 import io.swagger.jaxrs.listing.SwaggerSerializers;
@@ -27,6 +29,8 @@ public class RestApplication extends Application {
         Set<Class<?>> resources = new java.util.HashSet<>();
         resources.add(ApiListingResource.class);
         resources.add(SwaggerSerializers.class);
+        resources.add(TennisRefereeServices.class);
+        resources.add(TennisRefereeValidationExceptionMapper.class);
         resources.add(TennisRefereeExceptionMapper.class);
         return resources;
     }
