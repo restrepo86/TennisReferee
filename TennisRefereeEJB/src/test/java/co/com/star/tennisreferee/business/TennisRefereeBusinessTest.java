@@ -2,6 +2,7 @@ package co.com.star.tennisreferee.business;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.mockito.Mockito.*;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -41,6 +42,7 @@ public class TennisRefereeBusinessTest {
 		ScoreTennis scoreResponseDTO = tennisRefereeBusiness.calculateScore(scoreRequestDTO);
 		assertEquals(1, scoreResponseDTO.getScorePlayerOne());
 		assertEquals(0, scoreResponseDTO.getScorePlayerTwo()); 
+		verify(validation).validateScore(scoreRequestDTO);
 		
 	}
 	
@@ -51,6 +53,7 @@ public class TennisRefereeBusinessTest {
 		scoreRequestDTO.setPlayerOnePoint(true);
 		scoreRequestDTO.setPlayerTwoPoint(true);
 		tennisRefereeBusiness.calculateScore(scoreRequestDTO);
+		verify(validation).validateScore(scoreRequestDTO);
 		
 	}
 	
@@ -63,6 +66,7 @@ public class TennisRefereeBusinessTest {
 		ScoreTennis scoreResponseDTO = tennisRefereeBusiness.calculateScore(scoreRequestDTO);
 		assertNotEquals(2, scoreResponseDTO.getScorePlayerOne());
 		assertNotEquals(1, scoreResponseDTO.getScorePlayerTwo()); 
+		verify(validation).validateScore(scoreRequestDTO);
 		
 	}
 	
@@ -75,6 +79,7 @@ public class TennisRefereeBusinessTest {
 		ScoreTennis scoreResponseDTO = tennisRefereeBusiness.calculateScore(scoreRequestDTO);
 		assertNotEquals(0, scoreResponseDTO.getScorePlayerOne());
 		assertNotEquals(1, scoreResponseDTO.getScorePlayerTwo()); 
+		verify(validation).validateScore(scoreRequestDTO);
 		
 	}
 	
@@ -86,6 +91,7 @@ public class TennisRefereeBusinessTest {
 		scoreRequestDTO.setPlayerTwoPoint(false);
 		ScoreTennis scoreResponseDTO = tennisRefereeBusiness.calculateScore(scoreRequestDTO);
 		assertEquals(0, scoreResponseDTO.getScorePlayerTwo()); 
+		verify(validation).validateScore(scoreRequestDTO);
 		
 	}
 	
@@ -103,6 +109,7 @@ public class TennisRefereeBusinessTest {
 		ScoreTennis scoreTennisSetTwo = tennisRefereeBusiness.calculateScore(scoreRequestDTO);
 		assertEquals(2, scoreTennisSetTwo.getScorePlayerOne()); 
 		assertEquals(0, scoreTennisSetTwo.getScorePlayerTwo()); 
+		verify(validation, times(2)).validateScore(scoreRequestDTO);
 		
 	}
 	
@@ -120,6 +127,7 @@ public class TennisRefereeBusinessTest {
 		ScoreTennis scoreTennisSetTwo = tennisRefereeBusiness.calculateScore(scoreRequestDTO);
 		assertEquals(1, scoreTennisSetTwo.getScorePlayerOne()); 
 		assertEquals(1, scoreTennisSetTwo.getScorePlayerTwo()); 
+		verify(validation, times(2)).validateScore(scoreRequestDTO); 
 		
 	}
 	 
@@ -137,7 +145,8 @@ public class TennisRefereeBusinessTest {
 		ScoreTennis scoreTennisSetTwo = tennisRefereeBusiness.calculateScore(scoreRequestDTO);
 		assertEquals(0, scoreTennisSetTwo.getScorePlayerOne()); 
 		assertEquals(2, scoreTennisSetTwo.getScorePlayerTwo()); 
-		
+		verify(validation, times(2)).validateScore(scoreRequestDTO);
+		 
 	}
 	
 }
