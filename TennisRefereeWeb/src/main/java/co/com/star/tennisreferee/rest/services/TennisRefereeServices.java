@@ -2,6 +2,7 @@ package co.com.star.tennisreferee.rest.services;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -26,6 +27,12 @@ public class TennisRefereeServices {
 	@Produces(MediaType.APPLICATION_JSON)
 	public ScoreTennis calculateScore(ScoreRequestDTO scoreRequestDTO) throws TennisRefereeValidationException, TennisRefereeException {
 		return tennisRefereeBusiness.calculateScore(scoreRequestDTO);
+	}
+
+	@Path("/")
+	@DELETE
+	public void restartGame() {
+		tennisRefereeBusiness.restartGame();
 	} 
 
 }

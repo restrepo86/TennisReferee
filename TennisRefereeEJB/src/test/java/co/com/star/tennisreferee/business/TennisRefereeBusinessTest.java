@@ -168,6 +168,11 @@ public class TennisRefereeBusinessTest {
 		assertEquals(2, scoreTennisSetTwo.getScorePlayerTwo()); 
 		verify(validation, times(2)).validateScore(scoreRequestDTO, null);
 		 
+	} 
+	
+	@Test
+	public void shouldBeRestartGame() {
+		tennisRefereeBusiness.restartGame();
 	}
 	
 }

@@ -32,4 +32,10 @@ public class TennisRefereeServicesTest {
 		verify(tennisRefereeBusiness).calculateScore(scoreRequestDTO);
 	}
 	
+	@Test
+	public void shouldBeRestartGame() {
+		tennisRefereeServices.restartGame();
+		verify(tennisRefereeBusiness).restartGame();
+	}
+	
 }

@@ -64,6 +64,9 @@ public class TennisRefereeBusiness {
 		
 	}
 
+	public void restartGame() {
+		ScoreTennis.restartGame();
+	}
 	
 
 }
