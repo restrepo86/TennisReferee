@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import co.com.star.tennisreferee.enums.EGameScore;
+import co.com.star.tennisreferee.enums.EScoreGame;
 
 @RunWith(MockitoJUnitRunner.class)
 public class DeuceGameTest {
@@ -19,19 +19,19 @@ public class DeuceGameTest {
 	@Test
 	public void shouldBeExecuteRuleDeuceGameAndReturnDeuceByEqualsScore() {
 		String gameScore = deuceGame.executeRule(3, 3);
-		assertEquals(EGameScore.DEUCE.getNameGame(), gameScore);
+		assertEquals(EScoreGame.DEUCE.getNameGame(), gameScore);
 	}
 	
 	@Test
 	public void shouldBeExecuteRuleDeuceGameAndReturnDeuceByEqualsScoreTestTwo() {
 		String gameScore = deuceGame.executeRule(4, 4);
-		assertEquals(EGameScore.DEUCE.getNameGame(), gameScore);
+		assertEquals(EScoreGame.DEUCE.getNameGame(), gameScore);
 	}
 	
 	@Test
 	public void shouldBeExecuteRuleDeuceGameAndReturnDeuceByEqualsScoreTestThree() {
 		String gameScore = deuceGame.executeRule(150, 150);
-		assertEquals(EGameScore.DEUCE.getNameGame(), gameScore);
+		assertEquals(EScoreGame.DEUCE.getNameGame(), gameScore);
 	}
 	
 	@Test

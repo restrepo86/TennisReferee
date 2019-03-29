@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import co.com.star.tennisreferee.enums.EGameScore;
+import co.com.star.tennisreferee.enums.EScoreGame;
 
 @RunWith(MockitoJUnitRunner.class)
 public class WinnerGameTest {
@@ -19,25 +19,25 @@ public class WinnerGameTest {
 	@Test
 	public void shouldBeExecuteRuleWinnerGameAndReturnWinnerPlayerOne() {
 		String gameScore = winnerGame.executeRule(4, 2);
-		assertEquals(EGameScore.WINNER_GAME_PLAYER_ONE.getNameGame(), gameScore);
+		assertEquals(EScoreGame.WINNER_GAME_PLAYER_ONE.getNameGame(), gameScore);
 	}
 	
 	@Test
 	public void shouldBeExecuteRuleWinnerGameAndReturnWinnerPlayerOneTestTwo() {
 		String gameScore = winnerGame.executeRule(90, 88);
-		assertEquals(EGameScore.WINNER_GAME_PLAYER_ONE.getNameGame(), gameScore);
+		assertEquals(EScoreGame.WINNER_GAME_PLAYER_ONE.getNameGame(), gameScore);
 	}
 	
 	@Test
 	public void shouldBeExecuteRuleWinnerGameAndReturnWinnerPlayerTwo() {
 		String gameScore = winnerGame.executeRule(2, 4);
-		assertEquals(EGameScore.WINNER_GAME_PLAYER_TWO.getNameGame(), gameScore);
+		assertEquals(EScoreGame.WINNER_GAME_PLAYER_TWO.getNameGame(), gameScore);
 	}
 	
 	@Test
 	public void shouldBeExecuteRuleWinnerGameAndReturnWinnerPlayerTwoTestTwo() {
 		String gameScore = winnerGame.executeRule(40, 42);
-		assertEquals(EGameScore.WINNER_GAME_PLAYER_TWO.getNameGame(), gameScore);
+		assertEquals(EScoreGame.WINNER_GAME_PLAYER_TWO.getNameGame(), gameScore);
 	}
 	
 	@Test

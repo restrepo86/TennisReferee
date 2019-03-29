@@ -1,8 +1,8 @@
 package co.com.star.tennisreferee.validation.gamescore;
 
-import co.com.star.tennisreferee.enums.EGameScore;
+import co.com.star.tennisreferee.enums.EScoreGame;
 
-public class VentajeGame implements IGameScore {
+public class VentajeGame implements IScoreGame {
 
 	@Override
 	public String executeRule(int scorePlayerOne, int scorePlayerTwo) {
@@ -22,9 +22,9 @@ public class VentajeGame implements IGameScore {
 		String scoreGame = null;
 		
 		if (scorePlayerOne - scorePlayerTwo == 1) {
-			scoreGame = EGameScore.VENTAJA_PLAYER_ONE.getNameGame();
+			scoreGame = EScoreGame.VENTAJA_PLAYER_ONE.getNameGame();
 		} else if (scorePlayerTwo - scorePlayerOne == 1) {
-			scoreGame = EGameScore.VENTAJA_PLAYER_TWO.getNameGame();
+			scoreGame = EScoreGame.VENTAJA_PLAYER_TWO.getNameGame();
 		}
 		
 		return scoreGame;

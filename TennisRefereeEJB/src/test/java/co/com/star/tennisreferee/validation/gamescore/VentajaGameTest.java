@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import co.com.star.tennisreferee.enums.EGameScore;
+import co.com.star.tennisreferee.enums.EScoreGame;
 
 @RunWith(MockitoJUnitRunner.class)
 public class VentajaGameTest {
@@ -19,25 +19,25 @@ public class VentajaGameTest {
 	@Test
 	public void shouldBeExecuteRuleVentajaGameAndReturnVentajaByPlayerOnePointMoreOpponentAfterThreePonts() {
 		String scoreGame = ventajaGame.executeRule(4, 3);
-		assertEquals(EGameScore.VENTAJA_PLAYER_ONE.getNameGame(), scoreGame);
+		assertEquals(EScoreGame.VENTAJA_PLAYER_ONE.getNameGame(), scoreGame);
 	}
 	
 	@Test
 	public void shouldBeExecuteRuleVentajaGameAndReturnVentajaByPlayerOnePointMoreOpponentAfterThreePontsTestTwo() {
 		String scoreGame = ventajaGame.executeRule(78, 77);
-		assertEquals(EGameScore.VENTAJA_PLAYER_ONE.getNameGame(), scoreGame);
+		assertEquals(EScoreGame.VENTAJA_PLAYER_ONE.getNameGame(), scoreGame);
 	}
 	
 	@Test
 	public void shouldBeExecuteRuleVentajaGameAndReturnVentajaByPlayerTwoPointMoreOpponentAfterThreePonts() {
 		String scoreGame = ventajaGame.executeRule(3, 4);
-		assertEquals(EGameScore.VENTAJA_PLAYER_TWO.getNameGame(), scoreGame);
+		assertEquals(EScoreGame.VENTAJA_PLAYER_TWO.getNameGame(), scoreGame);
 	}
 
 	@Test
 	public void shouldBeExecuteRuleVentajaGameAndReturnVentajaByPlayerTwoPointMoreOpponentAfterThreePontsTestTwo() {
 		String scoreGame = ventajaGame.executeRule(80, 81);
-		assertEquals(EGameScore.VENTAJA_PLAYER_TWO.getNameGame(), scoreGame);
+		assertEquals(EScoreGame.VENTAJA_PLAYER_TWO.getNameGame(), scoreGame);
 	}
 
 	

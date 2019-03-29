@@ -10,7 +10,7 @@ public class ScoreTennis {
 	private int scorePlayerTwo;
 	private String scorePlayerOneDescription;
 	private String scorePlayerTwoDescription;
-	private String gameScore;
+	private String scoreGame;
 	
 	public static ScoreTennis getInstance() {
 		if (INSTANCE == null) buildInstance();
@@ -57,14 +57,13 @@ public class ScoreTennis {
 		this.scorePlayerTwoDescription = scorePlayerTwoDescription;
 	}
 
-	public String getGameScore() {
-		return gameScore;
+	public String getScoreGame() {
+		return scoreGame;
 	}
 
-	public void setGameScore(String gameScore) {
-		this.gameScore = gameScore;
+	public void setScoreGame(String scoreGame) {
+		this.scoreGame = scoreGame;
 	}
 	
-
 
 }

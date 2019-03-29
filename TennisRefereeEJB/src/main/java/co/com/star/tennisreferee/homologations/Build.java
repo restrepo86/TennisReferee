@@ -13,7 +13,7 @@ public class Build {
 		if (scoreDescription == null) buildInstance();
 		return scoreDescription;
 	}
-
+ 
 	private synchronized static void buildInstance() {
 		
 		scoreDescription = new HashMap<>();
