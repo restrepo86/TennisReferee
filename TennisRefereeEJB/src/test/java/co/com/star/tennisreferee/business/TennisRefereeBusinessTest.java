@@ -55,10 +55,10 @@ public class TennisRefereeBusinessTest {
 		ScoreTennis scoreResponseDTO = tennisRefereeBusiness.calculateScore(scoreRequestDTO);
 		assertEquals(1, scoreResponseDTO.getScorePlayerOne());
 		assertEquals(0, scoreResponseDTO.getScorePlayerTwo()); 
-		verify(validation).validateScore(scoreRequestDTO);
+		verify(validation).validateScore(scoreRequestDTO, null);
 		verify(scoreGameRules).getScoreGame(anyInt(), anyInt());
 		
-	}
+	} 
 	
 	@Test 
 	public void shouldBeThrowExcepcionByPointsInBothPlayers() throws TennisRefereeValidationException, TennisRefereeException {
@@ -68,7 +68,7 @@ public class TennisRefereeBusinessTest {
 		scoreRequestDTO.setPlayerTwoPoint(true);
 		when(scoreGameRules.getScoreGame(anyInt(), anyInt())).thenReturn(Optional.empty());
 		tennisRefereeBusiness.calculateScore(scoreRequestDTO);
-		verify(validation).validateScore(scoreRequestDTO);
+		verify(validation).validateScore(scoreRequestDTO, null);
 		
 	}
 	
@@ -82,7 +82,7 @@ public class TennisRefereeBusinessTest {
 		ScoreTennis scoreResponseDTO = tennisRefereeBusiness.calculateScore(scoreRequestDTO);
 		assertNotEquals(2, scoreResponseDTO.getScorePlayerOne());
 		assertNotEquals(1, scoreResponseDTO.getScorePlayerTwo()); 
-		verify(validation).validateScore(scoreRequestDTO);
+		verify(validation).validateScore(scoreRequestDTO, null);
 		
 	}
 	
@@ -96,7 +96,7 @@ public class TennisRefereeBusinessTest {
 		ScoreTennis scoreResponseDTO = tennisRefereeBusiness.calculateScore(scoreRequestDTO);
 		assertNotEquals(0, scoreResponseDTO.getScorePlayerOne());
 		assertNotEquals(1, scoreResponseDTO.getScorePlayerTwo()); 
-		verify(validation).validateScore(scoreRequestDTO);
+		verify(validation).validateScore(scoreRequestDTO, null);
 		
 	}
 	
@@ -109,7 +109,7 @@ public class TennisRefereeBusinessTest {
 		when(scoreGameRules.getScoreGame(anyInt(), anyInt())).thenReturn(Optional.empty());
 		ScoreTennis scoreResponseDTO = tennisRefereeBusiness.calculateScore(scoreRequestDTO);
 		assertEquals(0, scoreResponseDTO.getScorePlayerTwo()); 
-		verify(validation).validateScore(scoreRequestDTO);
+		verify(validation).validateScore(scoreRequestDTO, null);
 		
 	}
 	
@@ -128,7 +128,7 @@ public class TennisRefereeBusinessTest {
 		ScoreTennis scoreTennisSetTwo = tennisRefereeBusiness.calculateScore(scoreRequestDTO);
 		assertEquals(2, scoreTennisSetTwo.getScorePlayerOne()); 
 		assertEquals(0, scoreTennisSetTwo.getScorePlayerTwo()); 
-		verify(validation, times(2)).validateScore(scoreRequestDTO);
+		verify(validation, times(2)).validateScore(scoreRequestDTO, null);
 		
 	}
 	
@@ -147,7 +147,7 @@ public class TennisRefereeBusinessTest {
 		ScoreTennis scoreTennisSetTwo = tennisRefereeBusiness.calculateScore(scoreRequestDTO);
 		assertEquals(1, scoreTennisSetTwo.getScorePlayerOne()); 
 		assertEquals(1, scoreTennisSetTwo.getScorePlayerTwo()); 
-		verify(validation, times(2)).validateScore(scoreRequestDTO); 
+		verify(validation, times(2)).validateScore(scoreRequestDTO, null); 
 		
 	}
 	 
@@ -166,7 +166,7 @@ public class TennisRefereeBusinessTest {
 		ScoreTennis scoreTennisSetTwo = tennisRefereeBusiness.calculateScore(scoreRequestDTO);
 		assertEquals(0, scoreTennisSetTwo.getScorePlayerOne()); 
 		assertEquals(2, scoreTennisSetTwo.getScorePlayerTwo()); 
-		verify(validation, times(2)).validateScore(scoreRequestDTO);
+		verify(validation, times(2)).validateScore(scoreRequestDTO, null);
 		 
 	}
 	

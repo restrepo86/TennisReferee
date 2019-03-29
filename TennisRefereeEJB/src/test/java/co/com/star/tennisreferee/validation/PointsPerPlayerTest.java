@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import co.com.star.tennisreferee.dto.ScoreRequestDTO;
+import co.com.star.tennisreferee.dto.ValidateDTO;
 import co.com.star.tennisreferee.exception.SinglePlayerPointsException;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -15,32 +15,32 @@ public class PointsPerPlayerTest {
 	@InjectMocks
 	private PointsPerPlayer pointsPerPlayer;
 	
-	private ScoreRequestDTO scoreRequestDTO;
+	private ValidateDTO validateDTO;
 
 	@Before
 	public void setUp() {
-		scoreRequestDTO = new ScoreRequestDTO();
+		validateDTO = new ValidateDTO();
 	}
 	
 	@Test(expected = SinglePlayerPointsException.class)
 	public void shouldBeThrowExceptionBySinglePlayerPoints() throws SinglePlayerPointsException {
-		scoreRequestDTO.setPlayerOnePoint(true);
-		scoreRequestDTO.setPlayerTwoPoint(true);
-		pointsPerPlayer.validate(scoreRequestDTO);
+		validateDTO.setPlayerOnePoint(true);
+		validateDTO.setPlayerTwoPoint(true);
+		pointsPerPlayer.validate(validateDTO);
 	}
 	
 	@Test
 	public void shouldBeContinueByValidationOk() throws SinglePlayerPointsException {
-		scoreRequestDTO.setPlayerOnePoint(false);
-		scoreRequestDTO.setPlayerTwoPoint(true);
-		pointsPerPlayer.validate(scoreRequestDTO);
+		validateDTO.setPlayerOnePoint(false);
+		validateDTO.setPlayerTwoPoint(true);
+		pointsPerPlayer.validate(validateDTO);
 	}
 	
 	@Test
 	public void shouldBeContinueByValidationOkTestTwo() throws SinglePlayerPointsException {
-		scoreRequestDTO.setPlayerOnePoint(true);
-		scoreRequestDTO.setPlayerTwoPoint(false);
-		pointsPerPlayer.validate(scoreRequestDTO);
+		validateDTO.setPlayerOnePoint(true);
+		validateDTO.setPlayerTwoPoint(false);
+		pointsPerPlayer.validate(validateDTO);
 	}
 	
 }

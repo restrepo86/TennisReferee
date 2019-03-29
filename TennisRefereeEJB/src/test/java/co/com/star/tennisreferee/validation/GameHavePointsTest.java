@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import co.com.star.tennisreferee.dto.ScoreRequestDTO;
+import co.com.star.tennisreferee.dto.ValidateDTO;
 import co.com.star.tennisreferee.exception.GameWithoutPointsException;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -15,39 +15,39 @@ public class GameHavePointsTest {
 	@InjectMocks
 	private GameHavePoints gameHavePoints;
 	
-	private ScoreRequestDTO scoreRequestDTO;
+	private ValidateDTO validateDTO;
 	
 	@Before
 	public void setUp() {
-		scoreRequestDTO = new ScoreRequestDTO();
+		validateDTO = new ValidateDTO();
 	}
 	
 	@Test(expected = GameWithoutPointsException.class)
 	public void shouldBeThrowExceptionByGameWithoutPoints() throws GameWithoutPointsException {
-		scoreRequestDTO.setPlayerOnePoint(false);
-		scoreRequestDTO.setPlayerTwoPoint(false); 
-		gameHavePoints.validate(scoreRequestDTO);
+		validateDTO.setPlayerOnePoint(false);
+		validateDTO.setPlayerTwoPoint(false); 
+		gameHavePoints.validate(validateDTO);
 	}
 	
 	@Test
 	public void shouldBeContinueByValidationOk() throws GameWithoutPointsException {
-		scoreRequestDTO.setPlayerOnePoint(true);
-		scoreRequestDTO.setPlayerTwoPoint(true); 
-		gameHavePoints.validate(scoreRequestDTO);
-	}
+		validateDTO.setPlayerOnePoint(true);
+		validateDTO.setPlayerTwoPoint(true); 
+		gameHavePoints.validate(validateDTO);
+	} 
 	
 	@Test
 	public void shouldBeContinueByValidationOkTestTwo() throws GameWithoutPointsException {
-		scoreRequestDTO.setPlayerOnePoint(false);
-		scoreRequestDTO.setPlayerTwoPoint(true); 
-		gameHavePoints.validate(scoreRequestDTO);
+		validateDTO.setPlayerOnePoint(false);
+		validateDTO.setPlayerTwoPoint(true); 
+		gameHavePoints.validate(validateDTO);
 	}
 	
 	@Test
 	public void shouldBeContinueByValidationOkTestThree() throws GameWithoutPointsException {
-		scoreRequestDTO.setPlayerOnePoint(true);
-		scoreRequestDTO.setPlayerTwoPoint(false); 
-		gameHavePoints.validate(scoreRequestDTO);
+		validateDTO.setPlayerOnePoint(true);
+		validateDTO.setPlayerTwoPoint(false); 
+		gameHavePoints.validate(validateDTO);
 	}
 	
 }

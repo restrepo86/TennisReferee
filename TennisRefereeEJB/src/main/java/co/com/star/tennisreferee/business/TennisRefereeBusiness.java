@@ -31,8 +31,8 @@ public class TennisRefereeBusiness {
 		ScoreTennis scoreTennis = ScoreTennis.getInstance();
 		
 		try {
-			 
-			validation.validateScore(scoreRequestDTO);
+			   
+			validation.validateScore(scoreRequestDTO, scoreTennis.getScoreGame());
 			
 			int scorePlayerOne = scoreRequestDTO.isPlayerOnePoint() ? scoreTennis.getScorePlayerOne() + 1 : scoreTennis.getScorePlayerOne();
 			int scorePlayerTwo = scoreRequestDTO.isPlayerTwoPoint() ? scoreTennis.getScorePlayerTwo() + 1 : scoreTennis.getScorePlayerTwo();
