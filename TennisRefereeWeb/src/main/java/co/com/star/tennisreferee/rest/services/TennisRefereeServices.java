@@ -10,6 +10,7 @@ import javax.ws.rs.core.MediaType;
 import co.com.star.tennisreferee.business.TennisRefereeBusiness;
 import co.com.star.tennisreferee.dto.ScoreRequestDTO;
 import co.com.star.tennisreferee.dto.ScoreTennis;
+import co.com.star.tennisreferee.exception.TennisRefereeException;
 import co.com.star.tennisreferee.exception.TennisRefereeValidationException;
 
 @Path("score")
@@ -23,7 +24,7 @@ public class TennisRefereeServices {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public ScoreTennis calculateScore(ScoreRequestDTO scoreRequestDTO) throws TennisRefereeValidationException {
+	public ScoreTennis calculateScore(ScoreRequestDTO scoreRequestDTO) throws TennisRefereeValidationException, TennisRefereeException {
 		return tennisRefereeBusiness.calculateScore(scoreRequestDTO);
 	} 
 

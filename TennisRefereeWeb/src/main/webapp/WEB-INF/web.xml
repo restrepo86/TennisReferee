@@ -47,9 +47,4 @@
         <url-pattern>/rest/*</url-pattern>
     </filter-mapping>
  
-     <filter-mapping>
-        <filter-name>TokenProviderFilter</filter-name>
-        <url-pattern>/rest/*</url-pattern>
-    </filter-mapping>
-    
 </web-app>

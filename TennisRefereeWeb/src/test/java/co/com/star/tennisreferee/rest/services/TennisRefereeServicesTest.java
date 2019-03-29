@@ -10,6 +10,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import co.com.star.tennisreferee.business.TennisRefereeBusiness;
 import co.com.star.tennisreferee.dto.ScoreRequestDTO;
+import co.com.star.tennisreferee.exception.TennisRefereeException;
 import co.com.star.tennisreferee.exception.TennisRefereeValidationException;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -26,7 +27,7 @@ public class TennisRefereeServicesTest {
 	private ScoreRequestDTO scoreRequestDTO;
 	
 	@Test 
-	public void shouldBeCalculateTheScoreOfTheGame() throws TennisRefereeValidationException {
+	public void shouldBeCalculateTheScoreOfTheGame() throws TennisRefereeValidationException, TennisRefereeException {
 		tennisRefereeServices.calculateScore(scoreRequestDTO);
 		verify(tennisRefereeBusiness).calculateScore(scoreRequestDTO);
 	}

@@ -6,27 +6,27 @@ import javax.ws.rs.ext.Provider;
 
 import org.jboss.logging.Logger;
 
-import co.com.star.tennisreferee.exception.TennisRefereeException;
+import co.com.star.tennisreferee.exception.TennisRefereeValidationException;
 
 @Provider
-public class TennisRefereeValidationExceptionMapper implements ExceptionMapper<TennisRefereeException> {
+public class TennisRefereeValidationExceptionMapper implements ExceptionMapper<TennisRefereeValidationException> {
 
 	public static final String HEADER_NAME = "badRequestMessage";
 	private static final Logger LOG = Logger.getLogger(TennisRefereeValidationExceptionMapper.class);
 	    
 	@Override
-	public Response toResponse(TennisRefereeException exception) {
-        
-		LOG.info(exception);
+	public Response toResponse(TennisRefereeValidationException tennisRefereeValidationException) {
+         
+		LOG.info(tennisRefereeValidationException);
 
-        if (exception instanceof TennisRefereeException) {
+        if (tennisRefereeValidationException instanceof TennisRefereeValidationException) {
             return Response.status(Response.Status.BAD_REQUEST)
-                    .header(HEADER_NAME, exception.getMessage())
+                    .header(HEADER_NAME, tennisRefereeValidationException.getMessage())
                     .build();
         }
 
         return Response.serverError()
-                .header(HEADER_NAME, exception.getMessage())
+                .header(HEADER_NAME, tennisRefereeValidationException.getMessage())
                 .build();
 
 	}
