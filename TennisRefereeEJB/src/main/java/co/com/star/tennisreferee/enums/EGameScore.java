@@ -3,7 +3,8 @@ package co.com.star.tennisreferee.enums;
 public enum EGameScore {
 
 	WINNER_GAME_PLAYER_ONE("WINNER GAME PLAYER ONE"),
-	WINNER_GAME_PLAYER_TWO("WINNER GAME PLAYER TWO");
+	WINNER_GAME_PLAYER_TWO("WINNER GAME PLAYER TWO"), 
+	DEUCE("Deuce");
 	
 	private final String nameGame;
 	
